@@ -21,7 +21,7 @@ def is_valid_user_and_company?(user, company)
 end
 
 def write_user_info(file, user)
-  file.puts "		#{user[:last_name]}, #{user[:first_name]}, #{user[:email]}"
+	file.puts "		#{user[:last_name]}, #{user[:first_name]}, #{user[:email]}"
 	file.puts "		  Previous Token Balance, #{user[:previous_tokens]}"
 	file.puts "		  New Token Balance #{user[:new_tokens]}"
 end
@@ -60,7 +60,7 @@ def generate_output(users, companies)
 			users_not_emailed = []
 			total_top_up = 0
 			company_users.sort_by! { |user| user[:last_name] }
-			
+
 			# Process each user in the company
 			company_users.each do |user|
 				next unless is_valid_user_and_company?(user, company)
@@ -68,14 +68,14 @@ def generate_output(users, companies)
 				previous_tokens = user[:tokens]
 				user[:tokens] += company[:top_up]
 				total_top_up += company[:top_up]
-				
+
 				user_info = {
-          last_name: user[:last_name],
-          first_name: user[:first_name],
-          email: user[:email],
-          previous_tokens: previous_tokens,
-          new_tokens: user[:tokens]
-        }
+					last_name: user[:last_name],
+					first_name: user[:first_name],
+					email: user[:email],
+					previous_tokens: previous_tokens,
+					new_tokens: user[:tokens]
+				}
 
 				if company[:email_status] && user[:email_status]
 					users_emailed << user_info
@@ -87,7 +87,7 @@ def generate_output(users, companies)
 			write_company_info(file, company, users_emailed, users_not_emailed, total_top_up)
 		end
 	end
-  puts 'output.txt file generated successfully.'
+	puts 'output.txt file generated successfully.'
 end
 
 # Main method to drive the process
