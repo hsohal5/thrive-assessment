@@ -58,7 +58,6 @@ def generate_output(users, companies)
 
 			users_emailed = []
 			users_not_emailed = []
-	
 			total_top_up = 0
 			company_users.sort_by! { |user| user[:last_name] }
 			
